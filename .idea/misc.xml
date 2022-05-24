@@ -23,11 +23,16 @@
         <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.204" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable/ic_launcher_background.xml" value="0.204" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.204" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_category.xml" value="0.1625" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_gio_hang.xml" value="0.15885416666666666" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_noi_bat.xml" value="0.1625" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_product.xml" value="0.28716002530044277" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_productdetail.xml" value="0.15885416666666666" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_search.xml" value="0.1625" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_yeu_thich.xml" value="0.1625" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/cardview_comment.xml" value="0.15885416666666666" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/cardview_giohang.xml" value="0.15885416666666666" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/fragment_home.xml" value="0.21587743732590528" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/loading_layout.xml" value="0.15885416666666666" />
       </map>
     </option>

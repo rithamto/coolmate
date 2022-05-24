@@ -1,5 +1,6 @@
 package com.dohuukhang.coolmate.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.tv_category_title.setText(mData.get(position).getTen());
         Glide.with(mContext).load(mData.get(position).getHinhAnh()).placeholder(R.drawable.noimage).into(holder.img_category_thumbnail);
         holder.cardView.setOnClickListener(new View.OnClickListener() {

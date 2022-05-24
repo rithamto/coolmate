@@ -1,5 +1,6 @@
 package com.dohuukhang.coolmate.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class RecyclerViewAdapterHomeCategory extends RecyclerView.Adapter<Recycl
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tv_category_title.setText(mData.get(position).getTitle());
         cardViewList.add(holder.cardView);
         cardViewList.get(0).setBackgroundResource(R.drawable.khung2);

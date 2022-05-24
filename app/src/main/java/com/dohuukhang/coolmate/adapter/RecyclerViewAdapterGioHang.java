@@ -1,5 +1,6 @@
 package com.dohuukhang.coolmate.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -34,7 +35,7 @@ public class RecyclerViewAdapterGioHang extends RecyclerView.Adapter<RecyclerVie
         return new MyViewHolder(itemView);
     }
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.tensp.setText(mData.get(position).getTen());
         holder.giasp.setText(mData.get(position).getGiaTien());
         Glide.with(mContext).load(mData.get(position).getHinhAnh()).placeholder(R.drawable.noimage).into(holder.anhsp);
