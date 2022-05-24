@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "345217019740",
+    "project_id": "coolmate-578b6",
+    "storage_bucket": "coolmate-578b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345217019740:android:0311b7c8001cdf421ddb99",
+        "android_client_info": {
+          "package_name": "com.dohuukhang.coolmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345217019740-btsmifup7rq2duqhjg9mp0nqfke6mgps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA4igZbxle-Z-Z87F4e6ZqMFGqE6AiYX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345217019740-btsmifup7rq2duqhjg9mp0nqfke6mgps.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

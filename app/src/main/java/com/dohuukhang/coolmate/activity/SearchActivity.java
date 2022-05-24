@@ -47,7 +47,7 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView_search);
 
         lstSearch = new ArrayList<Product>();
-//        loadData();
+        loadData();
 
         searchText.requestFocus();
 
