@@ -1,21 +1,9 @@
 package com.dohuukhang.coolmate.Object;
 
 public class Product {
-    private String Ten, HinhAnh, DanhMuc, NhaSanXuat, ThuơngHieu, XuatXu, Mota, GiaTien, NguoiBan;
+    private String Ten, HinhAnh, DanhMuc, Mota, GiaTien;
 
     public Product() {
-    }
-
-    public Product(String ten, String hinhAnh, String giaTien, String danhMuc, String nhaSanXuat, String thuơngHieu, String xuatXu, String mota, String nguoiBan) {
-        Ten = ten;
-        HinhAnh = hinhAnh;
-        DanhMuc = danhMuc;
-        NhaSanXuat = nhaSanXuat;
-        ThuơngHieu = thuơngHieu;
-        XuatXu = xuatXu;
-        Mota = mota;
-        GiaTien = giaTien;
-        NguoiBan = nguoiBan;
     }
 
     public String getTen() {
@@ -42,30 +30,6 @@ public class Product {
         DanhMuc = danhMuc;
     }
 
-    public String getNhaSanXuat() {
-        return NhaSanXuat;
-    }
-
-    public void setNhaSanXuat(String nhaSanXuat) {
-        NhaSanXuat = nhaSanXuat;
-    }
-
-    public String getThuơngHieu() {
-        return ThuơngHieu;
-    }
-
-    public void setThuơngHieu(String thuơngHieu) {
-        ThuơngHieu = thuơngHieu;
-    }
-
-    public String getXuatXu() {
-        return XuatXu;
-    }
-
-    public void setXuatXu(String xuatXu) {
-        XuatXu = xuatXu;
-    }
-
     public String getMota() {
         return Mota;
     }
@@ -82,11 +46,13 @@ public class Product {
         GiaTien = giaTien;
     }
 
-    public String getNguoiBan() {
-        return NguoiBan;
+    public Product(String ten, String hinhAnh, String giaTien, String danhMuc, String mota) {
+        Ten = ten;
+        HinhAnh = hinhAnh;
+        DanhMuc = danhMuc;
+        Mota = mota;
+        GiaTien = giaTien;
     }
 
-    public void setNguoiBan(String nguoiBan) {
-        NguoiBan = nguoiBan;
-    }
+
 }

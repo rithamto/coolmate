@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.dohuukhang.coolmate.Object.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -84,106 +86,7 @@ public class RecyclerViewAdapterHomeCategory extends RecyclerView.Adapter<Recycl
                             }
                         });
                         break;
-                    case "Điện thoại - Máy tính":
-                        mContext.refDienthoai = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Điện thoại - Máy tính");
-                        mContext.refDienthoai.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                mContext.lstDienthoai = new ArrayList<Product>();
-                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                    Product p = dataSnapshot1.getValue(Product.class);
-                                    mContext.lstDienthoai.add(p);
-                                }
-                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(mContext.getContext(), mContext.lstDienthoai);
-                                recyclerView.setAdapter(myAdapter);
-                            }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                Toast.makeText(mContext.getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        break;
-                    case "Thời trang":
-                        mContext.refQuanao = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Quần áo - Thời trang");
-                        mContext.refQuanao.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                mContext.lstQuanao = new ArrayList<Product>();
-                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                    Product p = dataSnapshot1.getValue(Product.class);
-                                    mContext.lstQuanao.add(p);
-                                }
-                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(mContext.getContext(), mContext.lstQuanao);
-                                recyclerView.setAdapter(myAdapter);
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                Toast.makeText(mContext.getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        break;
-                    case "Sách":
-                        mContext.refSach = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Sách - Văn phòng phẩm");
-                        mContext.refSach.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                mContext.lstSach = new ArrayList<Product>();
-                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                    Product p = dataSnapshot1.getValue(Product.class);
-                                    mContext.lstSach.add(p);
-                                }
-                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(mContext.getContext(), mContext.lstSach);
-                                recyclerView.setAdapter(myAdapter);
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                Toast.makeText(mContext.getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        break;
-                    case "Làm đẹp - Sức khỏe":
-                        mContext.refLamdep = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Sức khỏe - Làm đẹp");
-                        mContext.refLamdep.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                mContext.lstLamdep = new ArrayList<Product>();
-                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                    Product p = dataSnapshot1.getValue(Product.class);
-                                    mContext.lstLamdep.add(p);
-                                }
-                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(mContext.getContext(), mContext.lstLamdep);
-                                recyclerView.setAdapter(myAdapter);
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                Toast.makeText(mContext.getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        break;
-                    case "Đồ gia dụng":
-                        mContext.refNhacua = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Nhà cửa - Đồ gia dụng");
-                        mContext.refNhacua.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                mContext.lstNhacua = new ArrayList<Product>();
-                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                    Product p = dataSnapshot1.getValue(Product.class);
-                                    mContext.lstNhacua.add(p);
-                                }
-                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(mContext.getContext(), mContext.lstNhacua);
-                                recyclerView.setAdapter(myAdapter);
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                Toast.makeText(mContext.getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        break;
                 }
             }
         });

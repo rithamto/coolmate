@@ -14,7 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.dohuukhang.coolmate.Object.Category;
+import com.dohuukhang.coolmate.Object.Product;
+import com.dohuukhang.coolmate.adapter.RecyclerViewAdapterHomeCategory;
 import com.dohuukhang.coolmate.adapter.ViewPagerAdapter;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +26,9 @@ import java.util.TimerTask;
 
 public class HomeFragment extends Fragment  implements View.OnClickListener{
     ViewPager viewpager;
-    public ArrayList<Process> lstNoibat;
+    public ArrayList<Product> lstNoibat;
     List<Category> lstBtnNoibat;
+    public DatabaseReference reference, refDaxem;
     int currentPage = 0;
     Timer timer;
     final long DELAY_MS = 1500;

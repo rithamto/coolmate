@@ -20,10 +20,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.dohuukhang.coolmate.Object.Comment;
+import com.dohuukhang.coolmate.Object.Product;
 import com.dohuukhang.coolmate.R;
+import com.dohuukhang.coolmate.adapter.LoadingDialog;
+import com.dohuukhang.coolmate.adapter.RecyclerViewAdapterComment;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -47,7 +49,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ProductActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView tensp, gia, danhmuc, nhasx, thuonghieu, xuatxu, mota, baohanh, currentUserName;
+    private TextView tensp, gia, danhmuc,  mota, currentUserName;
     private ImageView img;
     ImageView back, like, gioHang, vietnhanxet, currentUserImage;
     EditText edtComment;
@@ -68,11 +70,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         tensp = findViewById(R.id.txt_tensp);
         gia = findViewById(R.id.txt_giasp);
         danhmuc = findViewById(R.id.txt_danhmuc);
-        nhasx = findViewById(R.id.txt_nhasx);
-        thuonghieu = findViewById(R.id.txt_thuonghieu);
-        xuatxu = findViewById(R.id.txt_xuatxu);
         mota = findViewById(R.id.txt_mota);
-        baohanh = findViewById(R.id.text_xemthembaohanh);
         recyclerView = findViewById(R.id.recyclerView_comment);
         edtComment = findViewById(R.id.edt_currentuser_comment);
         chonmua = findViewById(R.id.btn_chonmua);
@@ -94,40 +92,11 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         getCurrentUser();
 
         back.setOnClickListener(this);
-        baohanh.setOnClickListener(this);
         like.setOnClickListener(this);
         gioHang.setOnClickListener(this);
         chonmua.setOnClickListener(this);
         vietnhanxet.setOnClickListener(this);
         xemthemmota.setOnClickListener(this);
-    }
-
-    private void createBottomDialog() {
-        if (bottomDialod1 == null) {
-            View view = LayoutInflater.from(this).inflate(R.layout.bottom_dialog, null);
-            final TextView nhacungcap, noibaohanh, nguoiban;
-            nhacungcap = view.findViewById(R.id.baohanh_ncc);
-            noibaohanh = view.findViewById(R.id.baohanh_noibaohanh);
-            nguoiban = view.findViewById(R.id.baohanh_nguoiban);
-
-            ref = FirebaseDatabase.getInstance().getReference().child("User").child(nguoiBan);
-            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    nguoiban.setText(dataSnapshot.child("ten").getValue().toString());
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(ProductActivity.this, "load thất bại", Toast.LENGTH_SHORT).show();
-                }
-            });
-            nhacungcap.setText(nhacc);
-            noibaohanh.setText(noisanxuat);
-
-            bottomDialod1 = new BottomSheetDialog(this);
-            bottomDialod1.setContentView(view);
-        }
     }
 
     private void createComment() {
@@ -141,12 +110,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             Comment comment = new Comment(edtComment.getText().toString(), id, tenkhachhang, imageUser);
             mData.child("Product").child(name).child("Comment").child(dateFormat.format(date)).setValue(comment);
             edtComment.setText(null);
-
-            if (!nguoiBan.equals(id)) {
-                Notification notification = new Notification(dateFormat.format(date), name, tenkhachhang, imageLink);
-                mData = FirebaseDatabase.getInstance().getReference();
-                mData.child("Notifications").child(nguoiBan).child(dateFormat.format(date)).setValue(notification);
-            }
             Toast.makeText(ProductActivity.this, "Đã gửi nhận xét", Toast.LENGTH_SHORT).show();
         }
     }
@@ -163,16 +126,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                     tensp.setText(dataSnapshot.child("ten").getValue().toString());
                     gia.setText(dataSnapshot.child("giaTien").getValue().toString());
                     danhmuc.setText(dataSnapshot.child("danhMuc").getValue().toString());
-                    nhasx.setText(dataSnapshot.child("nhaSanXuat").getValue().toString());
-                    thuonghieu.setText(dataSnapshot.child("thuơngHieu").getValue().toString());
-                    xuatxu.setText(dataSnapshot.child("xuatXu").getValue().toString());
                     mota.setText(dataSnapshot.child("mota").getValue().toString());
                     Glide.with(ProductActivity.this).load(dataSnapshot.child("hinhAnh").getValue().toString())
                             .placeholder(R.drawable.noimage).into(img);
-
-                    nguoiBan = dataSnapshot.child("nguoiBan").getValue().toString();
-                    nhacc = dataSnapshot.child("thuơngHieu").getValue().toString();
-                    noisanxuat = dataSnapshot.child("nhaSanXuat").getValue().toString();
                     imageLink = dataSnapshot.child("hinhAnh").getValue().toString();
 
                     final String tempUrl = dataSnapshot.child("hinhAnh").getValue().toString();
@@ -180,7 +136,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void onClick(View v) {
                             final Dialog dialog = new Dialog(ProductActivity.this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
-                            PhotoView photoView = new PhotoView(ProductActivity.this);
+                            ImageView photoView = new ImageView(ProductActivity.this);
                             Glide.with(ProductActivity.this).load(tempUrl).into(photoView);
                             photoView.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -259,8 +215,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                 if (task.isSuccessful()) {
                     String url = task.getResult().toString();
                     Product product = new Product(tensp.getText().toString(), String.valueOf(url), gia.getText().toString(),
-                            danhmuc.getText().toString(), nhasx.getText().toString(), thuonghieu.getText().toString(),
-                            xuatxu.getText().toString(), mota.getText().toString(), nguoiBan);
+                            danhmuc.getText().toString(),  mota.getText().toString());
                     mData.child("Favourite").child(id).child(tensp.getText().toString()).setValue(product);
                     loadingDialog.dismissDialog();
                     Toast.makeText(ProductActivity.this, "Đã thêm vào danh sách yêu thích", Toast.LENGTH_SHORT).show();
@@ -305,8 +260,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                 if (task.isSuccessful()) {
                     String url = task.getResult().toString();
                     Product product = new Product(tensp.getText().toString(), String.valueOf(url), gia.getText().toString(),
-                            danhmuc.getText().toString(), nhasx.getText().toString(), thuonghieu.getText().toString(),
-                            xuatxu.getText().toString(), mota.getText().toString(), nguoiBan);
+                            danhmuc.getText().toString(),  mota.getText().toString());
                     mData.child("Cart").child(id).child(tensp.getText().toString()).setValue(product);
                     loadingDialog.dismissDialog();
                     Toast.makeText(ProductActivity.this, "Đã thêm vào Giỏ hàng", Toast.LENGTH_SHORT).show();
@@ -347,7 +301,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.text_xemthembaohanh:
-                createBottomDialog();
                 bottomDialod1.show();
                 break;
             case R.id.btn_product_like:
