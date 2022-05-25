@@ -63,7 +63,7 @@ public class YeuThichActivity extends AppCompatActivity {
         tieptuc = findViewById(R.id.yeuthich_tieptuc);
         recyclerView = findViewById(R.id.recyclerView_yeuthich);
 
-        loadData();
+//        loadData();
 
         tieptuc.setOnClickListener(new View.OnClickListener() {
             @Override

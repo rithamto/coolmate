@@ -164,37 +164,37 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
         recyclerViewBtnNoibat.setAdapter(myAdapterBtnNoibat);
     }
     public void loadData() {
-//        rd = new Random();
-//        LinearLayoutManager layoutManagerNoibat = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-//        recyclerViewNoibat = (RecyclerView) root.findViewById(R.id.recyclerView_home_noibat);
-//        recyclerViewNoibat.setLayoutManager(layoutManagerNoibat);
-//
-//        reference = FirebaseDatabase.getInstance().getReference().child("Product");
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                lstNoibat = new ArrayList<>();
-//                loadingViewNoibat.setVisibility(GONE);
-//                List<Product> full = new ArrayList<>();
-//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                    Product p = dataSnapshot1.getValue(Product.class);
-//                    full.add(p);
-//                }
-//                Collections.shuffle(full);
-//
-//                for (int i = 0; i < 5; ++i)
-//                    lstNoibat.add(full.get(i));
-//
-//                RecyclerViewAdapter myAdapterNoibat = new RecyclerViewAdapter(getContext(), lstNoibat);
-//                recyclerViewNoibat.setAdapter(myAdapterNoibat);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
+        rd = new Random();
+        LinearLayoutManager layoutManagerNoibat = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewNoibat = (RecyclerView) root.findViewById(R.id.recyclerView_home_noibat);
+        recyclerViewNoibat.setLayoutManager(layoutManagerNoibat);
+
+        reference = FirebaseDatabase.getInstance().getReference().child("Product");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                lstNoibat = new ArrayList<>();
+                loadingViewNoibat.setVisibility(GONE);
+                List<Product> full = new ArrayList<>();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Product p = dataSnapshot1.getValue(Product.class);
+                    full.add(p);
+                }
+                Collections.shuffle(full);
+
+                for (int i = 0; i < 5; ++i)
+                    lstNoibat.add(full.get(i));
+
+                RecyclerViewAdapter myAdapterNoibat = new RecyclerViewAdapter(getContext(), lstNoibat);
+                recyclerViewNoibat.setAdapter(myAdapterNoibat);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 //        LinearLayoutManager layoutManagerAo = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 //        final RecyclerView recyclerViewAo = (RecyclerView) root.findViewById(R.id.recyclerView_home_Ao);
 //        recyclerViewAo.setLayoutManager(layoutManagerAo);
@@ -217,7 +217,7 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
 //                Toast.makeText(getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
 //            }
 //        });
-//
+
 //        LinearLayoutManager layoutManagerQuan = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 //        final RecyclerView recyclerViewQuan = (RecyclerView) root.findViewById(R.id.recyclerView_home_quan);
 //        recyclerViewQuan.setLayoutManager(layoutManagerQuan);

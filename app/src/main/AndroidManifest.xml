@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dohuukhang.coolmate">
-
+<!--    <uses-permission android:name="android.permission.INTERNET" />-->
+<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
     <application
         android:allowBackup="true"
         android:icon="@drawable/img_3"
@@ -9,6 +10,13 @@
         android:roundIcon="@drawable/img_3"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.ProductActivity"></activity>
+        <activity android:name=".activity.CategoryActivity"></activity>
+        <activity android:name=".activity.GioHangActivity"></activity>
+        <activity android:name=".activity.NoiBatActivity"></activity>
+        <activity android:name=".activity.ProductdetailActivity"></activity>
+        <activity android:name=".activity.YeuThichActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
