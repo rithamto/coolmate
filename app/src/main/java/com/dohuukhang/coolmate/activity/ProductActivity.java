@@ -188,7 +188,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         final LoadingDialog loadingDialog = new LoadingDialog(ProductActivity.this);
         loadingDialog.startLoadingDialog();
         mData = FirebaseDatabase.getInstance().getReference();
-        final StorageReference storageRef = storage.getReferenceFromUrl("gs://orchid-29b28.appspot.com");
+        final StorageReference storageRef = storage.getReferenceFromUrl("gs://coolmate-578b6.appspot.com");
         Calendar calendar = Calendar.getInstance();
         final StorageReference mountainsRef = storageRef.child("image" + calendar.getTimeInMillis() + ".png");
 
@@ -233,7 +233,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         mData = FirebaseDatabase.getInstance().getReference();
 
-        final StorageReference storageRef = storage.getReferenceFromUrl("gs://orchid-29b28.appspot.com");
+        final StorageReference storageRef = storage.getReferenceFromUrl("gs://coolmate-578b6.appspot.com");
         Calendar calendar = Calendar.getInstance();
         final StorageReference mountainsRef = storageRef.child("image" + calendar.getTimeInMillis() + ".png");
 

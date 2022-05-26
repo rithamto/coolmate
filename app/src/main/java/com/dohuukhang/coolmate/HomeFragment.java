@@ -29,6 +29,7 @@ import com.dohuukhang.coolmate.activity.YeuThichActivity;
 import com.dohuukhang.coolmate.adapter.RecyclerViewAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -195,52 +196,52 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
             }
         });
 
-//        LinearLayoutManager layoutManagerAo = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-//        final RecyclerView recyclerViewAo = (RecyclerView) root.findViewById(R.id.recyclerView_home_Ao);
-//        recyclerViewAo.setLayoutManager(layoutManagerAo);
-//
-//        refAo = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Áo");
-//        refAo.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                lstAo = new ArrayList<Product>();
-//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                    Product p = dataSnapshot1.getValue(Product.class);
-//                    lstAo.add(p);
-//                }
-//                RecyclerViewAdapter myAdapterAo = new RecyclerViewAdapter(getContext(), lstAo);
-//                recyclerViewAo.setAdapter(myAdapterAo);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        LinearLayoutManager layoutManagerAo = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        final RecyclerView recyclerViewAo = (RecyclerView) root.findViewById(R.id.recyclerView_home_Ao);
+        recyclerViewAo.setLayoutManager(layoutManagerAo);
 
-//        LinearLayoutManager layoutManagerQuan = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-//        final RecyclerView recyclerViewQuan = (RecyclerView) root.findViewById(R.id.recyclerView_home_quan);
-//        recyclerViewQuan.setLayoutManager(layoutManagerQuan);
-//
-//        refQuan = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Quần");
-//        refQuan.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                lstQuan = new ArrayList<Product>();
-//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                    Product p = dataSnapshot1.getValue(Product.class);
-//                    lstQuan.add(p);
-//                }
-//                RecyclerViewAdapter myAdapterQuanao = new RecyclerViewAdapter(getContext(), lstQuan);
-//                recyclerViewQuan.setAdapter(myAdapterQuanao);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
+        refAo = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Áo");
+        refAo.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                lstAo = new ArrayList<Product>();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Product p = dataSnapshot1.getValue(Product.class);
+                    lstAo.add(p);
+                }
+                RecyclerViewAdapter myAdapterAo = new RecyclerViewAdapter(getContext(), lstAo);
+                recyclerViewAo.setAdapter(myAdapterAo);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        LinearLayoutManager layoutManagerQuan = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        final RecyclerView recyclerViewQuan = (RecyclerView) root.findViewById(R.id.recyclerView_home_quan);
+        recyclerViewQuan.setLayoutManager(layoutManagerQuan);
+
+        refQuan = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Quần");
+        refQuan.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                lstQuan = new ArrayList<Product>();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Product p = dataSnapshot1.getValue(Product.class);
+                    lstQuan.add(p);
+                }
+                RecyclerViewAdapter myAdapterQuanao = new RecyclerViewAdapter(getContext(), lstQuan);
+                recyclerViewQuan.setAdapter(myAdapterQuanao);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 //        LinearLayoutManager layoutManagerDaxem = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 //        final RecyclerView recyclerViewDaxem = (RecyclerView) root.findViewById(R.id.recyclerView_home_daxem);
 //        recyclerViewDaxem.setLayoutManager(layoutManagerDaxem);

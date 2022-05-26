@@ -6,6 +6,14 @@ public class Product {
     public Product() {
     }
 
+    public Product(String ten, String hinhAnh, String giaTien, String danhMuc, String mota) {
+        Ten = ten;
+        HinhAnh = hinhAnh;
+        DanhMuc = danhMuc;
+        Mota = mota;
+        GiaTien = giaTien;
+    }
+
     public String getTen() {
         return Ten;
     }
@@ -46,13 +54,7 @@ public class Product {
         GiaTien = giaTien;
     }
 
-    public Product(String ten, String hinhAnh, String giaTien, String danhMuc, String mota) {
-        Ten = ten;
-        HinhAnh = hinhAnh;
-        DanhMuc = danhMuc;
-        Mota = mota;
-        GiaTien = giaTien;
-    }
+
 
 
 }

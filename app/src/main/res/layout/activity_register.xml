@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/orchid1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/milkshake"
+        android:text="Create account"
+        android:textAlignment="center"
+        android:textColor="#EC6940"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/orchid1"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="50dp">
+
+        <ImageView
+            android:id="@+id/cardview_avatar"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/img_1" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/orchid1"
+        android:background="@drawable/border1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/register_user"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="90dp"
+                android:paddingStart="10dp"
+                android:drawablePadding="10dp"
+                android:background="@drawable/border1"
+                android:drawableLeft="@drawable/img_3"
+                android:hint="Địa chỉ Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/register_pass"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:paddingStart="10dp"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/img_2"
+                android:background="@drawable/border1"
+                android:hint="Password"
+                android:inputType="textPassword"/>
+
+        <EditText
+            android:id="@+id/register_ten"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:paddingStart="10dp"
+            android:drawablePadding="5dp"
+            android:background="@drawable/border1"
+            android:drawableLeft="@drawable/img_2"
+            android:hint="Họ tên người dùng"/>
+
+        <EditText
+            android:id="@+id/register_diachi"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:paddingStart="10dp"
+            android:drawablePadding="5dp"
+            android:background="@drawable/border1"
+            android:drawableLeft="@drawable/img_2"
+            android:hint="Địa chỉ"/>
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/img_2"
+                android:text="register"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+    </LinearLayout>
+
+</RelativeLayout>

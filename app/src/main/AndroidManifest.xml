@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dohuukhang.coolmate">
-<!--    <uses-permission android:name="android.permission.INTERNET" />-->
-<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
     <application
         android:allowBackup="true"
         android:icon="@drawable/img_3"
@@ -17,6 +15,9 @@
         <activity android:name=".activity.NoiBatActivity"></activity>
         <activity android:name=".activity.ProductdetailActivity"></activity>
         <activity android:name=".activity.YeuThichActivity"></activity>
+        <activity android:name=".activity.RegisterActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.SplashScreen"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

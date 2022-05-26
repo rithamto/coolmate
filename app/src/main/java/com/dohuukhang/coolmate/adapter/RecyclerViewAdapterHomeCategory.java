@@ -74,7 +74,7 @@ public class RecyclerViewAdapterHomeCategory extends RecyclerView.Adapter<Recycl
                                 }
                                 Collections.shuffle(full);
 
-                                for (int i = 0; i < 5; ++i)
+                                for (int i = 0; i < 1; ++i)
                                     mContext.lstNoibat.add(full.get(i));
 
                                 RecyclerViewAdapter myAdapterNoibat = new RecyclerViewAdapter(mContext.getContext(), mContext.lstNoibat);
