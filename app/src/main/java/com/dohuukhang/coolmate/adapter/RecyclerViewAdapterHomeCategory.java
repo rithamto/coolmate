@@ -62,7 +62,7 @@ public class RecyclerViewAdapterHomeCategory extends RecyclerView.Adapter<Recycl
 
                 switch (mData.get(position).getTitle()) {
                     case "Tất cả":
-                        mContext.reference = FirebaseDatabase.getInstance().getReference().child("Product");
+                        mContext.reference = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product");
                         mContext.reference.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -79,6 +79,46 @@ public class RecyclerViewAdapterHomeCategory extends RecyclerView.Adapter<Recycl
 
                                 RecyclerViewAdapter myAdapterNoibat = new RecyclerViewAdapter(mContext.getContext(), mContext.lstNoibat);
                                 recyclerView.setAdapter(myAdapterNoibat);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                Toast.makeText(mContext.getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        break;
+                    case "Áo":
+                        mContext.refAo = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product").orderByChild("danhMuc").equalTo("Áo");
+                        mContext.refAo.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                mContext.lstAo = new ArrayList<Product>();
+                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                    Product p = dataSnapshot1.getValue(Product.class);
+                                    mContext.lstAo.add(p);
+                                }
+                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(mContext.getContext(), mContext.lstAo);
+                                recyclerView.setAdapter(myAdapter);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                Toast.makeText(mContext.getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        break;
+                    case "Quần":
+                        mContext.refQuan = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product").orderByChild("danhMuc").equalTo("Quần");
+                        mContext.refQuan.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                mContext.lstQuan = new ArrayList<Product>();
+                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                    Product p = dataSnapshot1.getValue(Product.class);
+                                    mContext.lstQuan.add(p);
+                                }
+                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(mContext.getContext(), mContext.lstQuan);
+                                recyclerView.setAdapter(myAdapter);
                             }
 
                             @Override

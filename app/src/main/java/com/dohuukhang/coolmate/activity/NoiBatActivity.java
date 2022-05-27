@@ -56,7 +56,7 @@ public class NoiBatActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Product");
+        reference = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -69,7 +69,7 @@ public class NoiBatActivity extends AppCompatActivity {
                 }
                 Collections.shuffle(full);
 
-                for (int i = 0; i < 5; ++i)
+                for (int i = 0; i < 3; ++i)
                     lstNoibat.add(full.get(i));
 
                 RecyclerViewAdapterGioHang myAdapter = new RecyclerViewAdapterGioHang(NoiBatActivity.this, lstNoibat);

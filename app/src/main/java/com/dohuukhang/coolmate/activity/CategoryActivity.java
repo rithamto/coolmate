@@ -99,7 +99,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void queryProduct() {
-        reference = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo(danhMuc);
+        reference = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product").orderByChild("danhMuc").equalTo(danhMuc);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

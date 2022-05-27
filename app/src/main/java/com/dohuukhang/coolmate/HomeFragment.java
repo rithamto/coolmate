@@ -170,7 +170,7 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
         recyclerViewNoibat = (RecyclerView) root.findViewById(R.id.recyclerView_home_noibat);
         recyclerViewNoibat.setLayoutManager(layoutManagerNoibat);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Product");
+        reference = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -183,7 +183,7 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
                 }
                 Collections.shuffle(full);
 
-                for (int i = 0; i < 5; ++i)
+                for (int i = 0; i < 3; ++i)
                     lstNoibat.add(full.get(i));
 
                 RecyclerViewAdapter myAdapterNoibat = new RecyclerViewAdapter(getContext(), lstNoibat);
@@ -200,7 +200,7 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
         final RecyclerView recyclerViewAo = (RecyclerView) root.findViewById(R.id.recyclerView_home_Ao);
         recyclerViewAo.setLayoutManager(layoutManagerAo);
 
-        refAo = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Áo");
+        refAo = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product").orderByChild("danhMuc").equalTo("Áo");
         refAo.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -223,7 +223,7 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
         final RecyclerView recyclerViewQuan = (RecyclerView) root.findViewById(R.id.recyclerView_home_quan);
         recyclerViewQuan.setLayoutManager(layoutManagerQuan);
 
-        refQuan = FirebaseDatabase.getInstance().getReference().child("Product").orderByChild("danhMuc").equalTo("Quần");
+        refQuan = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product").orderByChild("danhMuc").equalTo("Quần");
         refQuan.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

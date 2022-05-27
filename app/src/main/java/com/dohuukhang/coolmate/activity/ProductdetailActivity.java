@@ -20,6 +20,6 @@ public class ProductdetailActivity extends AppCompatActivity {
 
         // Recieve data
         Intent intent = getIntent();
-        textView.setText(intent.getExtras().getString("mota"));
+        textView.setText(intent.getExtras().getString("MoTa"));
     }
 }
