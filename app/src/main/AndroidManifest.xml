@@ -18,6 +18,7 @@
         <activity android:name=".activity.RegisterActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.SplashScreen"/>
+        <activity android:name="SearchFragment"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

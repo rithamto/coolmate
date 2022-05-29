@@ -19,8 +19,8 @@ import com.dohuukhang.coolmate.activity.ProductActivity;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
-    private Context mContext ;
-    private List<Product> mData ;
+    private final Context mContext ;
+    private final List<Product> mData ;
 
     public RecyclerViewAdapter(Context mContext, List<Product> mData) {
         this.mContext = mContext;

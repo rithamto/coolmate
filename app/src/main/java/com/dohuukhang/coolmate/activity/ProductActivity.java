@@ -36,6 +36,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -54,14 +55,15 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     ImageView back, like, gioHang, vietnhanxet, currentUserImage;
     EditText edtComment;
     Button chonmua, xemthemmota;
-    DatabaseReference ref, mData;
+//    public Query ref;
+    DatabaseReference mData, ref;
 //    FirebaseStorage storage = FirebaseStorage.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app");
     FirebaseAuth mAuth;
     BottomSheetDialog bottomDialod1;
     String nhacc, noisanxuat, name, nguoiBan, id, tenkhachhang, imageLink, imageUser;
     ArrayList<Comment> lstComment;
     RecyclerView recyclerView;
-
+    public Product p = new Product();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +89,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         Intent intent = getIntent();
         name = intent.getExtras().getString("Ten");
 
-//        loadData();
+        loadData();
 //        loadComment();
 //        getCurrentUser();
 
@@ -115,20 +117,20 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 //    }
 
     private void loadData() {
+
         ref = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product").child(name);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange( DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() == null) {
-                    finish();
-                    Toast.makeText(ProductActivity.this, "Sản phẩm này đã bị xóa", Toast.LENGTH_SHORT).show();
+//                    finish();
+                    Toast.makeText(ProductActivity.this, "Sản phẩm này không còn nữa", Toast.LENGTH_SHORT).show();
                 } else {
                     tensp.setText(dataSnapshot.child("Ten").getValue().toString());
-                    gia.setText(dataSnapshot.child("GiaTien").getValue().toString());
+                    gia.setText(dataSnapshot.child("Giatien").getValue().toString());
                     danhmuc.setText(dataSnapshot.child("danhMuc").getValue().toString());
                     mota.setText(dataSnapshot.child("MoTa").getValue().toString());
-                    Glide.with(ProductActivity.this).load(dataSnapshot.child("HinhAnh").getValue().toString())
-                            .placeholder(R.drawable.noimage).into(img);
+                    Glide.with(ProductActivity.this).load(dataSnapshot.child("HinhAnh").getValue().toString()).placeholder(R.drawable.noimage).into(img);
                     imageLink = dataSnapshot.child("HinhAnh").getValue().toString();
 
                     final String tempUrl = dataSnapshot.child("HinhAnh").getValue().toString();

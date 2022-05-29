@@ -54,7 +54,14 @@ public class Product {
         GiaTien = giaTien;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Product{" +
+                "Ten='" + Ten + '\'' +
+                ", HinhAnh='" + HinhAnh + '\'' +
+                ", DanhMuc='" + DanhMuc + '\'' +
+                ", Mota='" + Mota + '\'' +
+                ", GiaTien='" + GiaTien + '\'' +
+                '}';
+    }
 }
