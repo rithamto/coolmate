@@ -14,7 +14,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_search, container, false);
+        root = inflater.inflate(R.layout.activity_search, container, false);
         return root;
     }
 

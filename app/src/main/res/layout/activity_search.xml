@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/btn_search_back"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:src="@drawable/img_2"
             android:background="?android:attr/selectableItemBackgroundBorderless" />
@@ -34,11 +34,11 @@
             android:queryHint="Bạn muốn tìm gì?"/>
 
         <ImageView
-            android:id="@+id/btn_search_giohang"
+            android:id="@+id/btn_search_choose"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
-            android:src="@drawable/img_2"
+            android:src="@drawable/img_5"
             android:layout_marginStart="10dp"
             android:background="?android:attr/selectableItemBackgroundBorderless" />
     </LinearLayout>

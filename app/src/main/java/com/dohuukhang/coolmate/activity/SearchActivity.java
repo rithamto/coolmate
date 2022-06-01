@@ -31,7 +31,7 @@ import java.util.Comparator;
 
 public class SearchActivity extends AppCompatActivity {
     EditText searchText;
-    ImageView back, gioHang;
+    ImageView back, chonsize;
     DatabaseReference reference;
     ArrayList<Product> lstSearch;
     RecyclerView recyclerView;
@@ -43,7 +43,7 @@ public class SearchActivity extends AppCompatActivity {
 
         searchText = findViewById(R.id.edt_search);
         back = findViewById(R.id.btn_search_back);
-        gioHang = findViewById(R.id.btn_search_giohang);
+        chonsize = findViewById(R.id.btn_search_choose);
         recyclerView = findViewById(R.id.recyclerView_search);
 
         lstSearch = new ArrayList<Product>();
@@ -73,10 +73,10 @@ public class SearchActivity extends AppCompatActivity {
             });
         }
 
-        gioHang.setOnClickListener(new View.OnClickListener() {
+        chonsize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SearchActivity.this, GioHangActivity.class);
+                Intent intent = new Intent(SearchActivity.this, ChonsizeActivity.class);
                 startActivity(intent);
             }
         });
@@ -118,7 +118,7 @@ public class SearchActivity extends AppCompatActivity {
         final RecyclerViewAdapterGioHang myAdapter = new RecyclerViewAdapterGioHang(SearchActivity.this, lstSearch);
         recyclerView.setAdapter(myAdapter);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Product");
+        reference = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Product");
         final String finalSearch = search;
         reference.addValueEventListener(new ValueEventListener() {
             @Override

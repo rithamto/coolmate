@@ -43,7 +43,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
 
         back = findViewById(R.id.category_back);
         search = findViewById(R.id.category_search);
-        giohang = findViewById(R.id.btn_category_giohang);
+        giohang = findViewById(R.id.btn_chooses);
         home = findViewById(R.id.btn_category_home);
         category = findViewById(R.id.category_text);
         danhmuc = findViewById(R.id.category_danhmuc);
@@ -125,7 +125,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
             case R.id.category_back:
                 finish();
                 break;
-            case R.id.btn_category_giohang:
+            case R.id.btn_chooses:
                 intent = new Intent(CategoryActivity.this, GioHangActivity.class);
                 startActivity(intent);
                 break;

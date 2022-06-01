@@ -57,13 +57,12 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     Button chonmua, xemthemmota;
 //    public Query ref;
     DatabaseReference mData, ref;
-//    FirebaseStorage storage = FirebaseStorage.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app");
+    FirebaseStorage storage = FirebaseStorage.getInstance("gs://coolmate-578b6.appspot.com");
     FirebaseAuth mAuth;
     BottomSheetDialog bottomDialod1;
     String nhacc, noisanxuat, name, nguoiBan, id, tenkhachhang, imageLink, imageUser;
     ArrayList<Comment> lstComment;
     RecyclerView recyclerView;
-    public Product p = new Product();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +78,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         img = findViewById(R.id.category_thumbnail);
         back = findViewById(R.id.btn_product_back);
         like = findViewById(R.id.btn_product_like);
-        gioHang = findViewById(R.id.btn_giohang);
+        gioHang = findViewById(R.id.btn_choose);
         vietnhanxet = findViewById(R.id.btn_post);
         currentUserName = findViewById(R.id.currentuser_name);
         currentUserImage = findViewById(R.id.currentuser_comment);
@@ -229,50 +228,50 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 //        });
 //    }
 
-//    private void addToCart() {
-//        final LoadingDialog loadingDialog = new LoadingDialog(ProductActivity.this);
-//        loadingDialog.startLoadingDialog();
-//
-//        mData = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
-//
-//        final StorageReference storageRef = storage.getReferenceFromUrl("gs://coolmate-578b6.appspot.com");
-//        Calendar calendar = Calendar.getInstance();
-//        final StorageReference mountainsRef = storageRef.child("image" + calendar.getTimeInMillis() + ".png");
-//
-//        // Get the data from an ImageView as bytes
-//        img.setDrawingCacheEnabled(true);
-//        img.buildDrawingCache();
-//        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-//        byte[] data = baos.toByteArray();
-//
-//        UploadTask uploadTask = mountainsRef.putBytes(data);
-//
-//        uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-//            @Override
-//            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-//                if (!task.isSuccessful()) {
-//                }
-//                return mountainsRef.getDownloadUrl();
-//            }
-//        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Uri> task) {
-//                if (task.isSuccessful()) {
-//                    String url = task.getResult().toString();
-//                    Product product = new Product(tensp.getText().toString(), String.valueOf(url), gia.getText().toString(),
-//                            danhmuc.getText().toString(),  mota.getText().toString());
-//                    mData.child("Cart").child(id).child(tensp.getText().toString()).setValue(product);
-//                    loadingDialog.dismissDialog();
-//                    Toast.makeText(ProductActivity.this, "Đã thêm vào Giỏ hàng", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    loadingDialog.dismissDialog();
-//                    Toast.makeText(ProductActivity.this, "Có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//    }
+    private void addToCart() {
+        final LoadingDialog loadingDialog = new LoadingDialog(ProductActivity.this);
+        loadingDialog.startLoadingDialog();
+
+        mData = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
+
+        final StorageReference storageRef = storage.getReferenceFromUrl("gs://coolmate-578b6.appspot.com");
+        Calendar calendar = Calendar.getInstance();
+        final StorageReference mountainsRef = storageRef.child("image" + calendar.getTimeInMillis() + ".png");
+
+        // Get the data from an ImageView as bytes
+        img.setDrawingCacheEnabled(true);
+        img.buildDrawingCache();
+        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = mountainsRef.putBytes(data);
+
+        uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                }
+                return mountainsRef.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    String url = task.getResult().toString();
+                    Product product = new Product(tensp.getText().toString(), String.valueOf(url), gia.getText().toString(),
+                            danhmuc.getText().toString(),  mota.getText().toString());
+                    mData.child("Cart").child(name).child(tensp.getText().toString()).setValue(product);
+                    loadingDialog.dismissDialog();
+                    Toast.makeText(ProductActivity.this, "Đã thêm vào Giỏ hàng", Toast.LENGTH_SHORT).show();
+                } else {
+                    loadingDialog.dismissDialog();
+                    Toast.makeText(ProductActivity.this, "Có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
 //    private void getCurrentUser() {
 //        mAuth = FirebaseAuth.getInstance();
@@ -310,15 +309,13 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 //                    Toast.makeText(ProductActivity.this, "Đây là sản phẩm bạn đăng bán", Toast.LENGTH_SHORT).show();
 //                else addLike();
 //                break;
-            case R.id.btn_giohang:
-                Intent intent = new Intent(ProductActivity.this, GioHangActivity.class);
+            case R.id.btn_choose:
+                Intent intent = new Intent(ProductActivity.this, ChonsizeActivity.class);
                 startActivity(intent);
                 break;
-//            case R.id.btn_chonmua:
-//                if (nguoiBan.equals(id))
-//                    Toast.makeText(ProductActivity.this, "Đây là sản phẩm bạn đăng bán", Toast.LENGTH_SHORT).show();
-//                else addToCart();
-//                break;
+            case R.id.btn_chonmua:
+                addToCart();
+                break;
 //            case R.id.btn_post:
 //                createComment();
 //                break;

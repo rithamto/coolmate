@@ -29,8 +29,8 @@
             android:layout_height="37dp"
             android:layout_marginStart="7dp"
             android:layout_weight="8"
-            android:background="@drawable/img_2"
-            android:drawableStart="@drawable/ic_search_black_24dp"
+            android:background="@color/black"
+            android:drawableStart="@android:drawable/ic_menu_search"
             android:gravity="center|left"
             android:paddingStart="10dp"
             android:textAllCaps="false"
@@ -38,13 +38,13 @@
             android:textStyle="normal" />
 
         <ImageView
-            android:id="@+id/btn_category_giohang"
+            android:id="@+id/btn_chooses"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_marginStart="7dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/img_2" />
+            android:src="@drawable/img_5" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -69,12 +69,12 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="10dp"
                     android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/img_3" />
+                    android:src="@drawable/ic_home_black_24dp" />
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/img_2" />
+                    android:src="@drawable/next" />
 
                 <TextView
                     android:id="@+id/category_text"
@@ -88,7 +88,12 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/img_2" />
+                    android:src="@drawable/next" />
+                <ImageView
+                    android:id="@+id/img_category"
+                    android:layout_width="38dp"
+                    android:layout_height="35dp"
+                    android:background="@color/white" />
 
                 <TextView
                     android:id="@+id/category_danhmuc"
@@ -100,20 +105,10 @@
 
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                app:cardCornerRadius="10dp">
-
-                <ImageView
-                    android:id="@+id/img_category"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/img_2" />
-            </androidx.cardview.widget.CardView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:src="@drawable/img_16"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -122,6 +117,7 @@
                 android:background="@drawable/border1">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:paddingLeft="30dp"
                     android:id="@+id/recyclerView_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
