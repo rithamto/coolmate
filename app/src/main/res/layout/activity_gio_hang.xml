@@ -21,18 +21,17 @@
             <LinearLayout
                 android:id="@+id/giohang_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/black"
+                android:layout_height="50dp"
+                android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="5dp">
-
                 <ImageView
                     android:id="@+id/giohang_back"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/img_2" />/>
+                    android:src="@drawable/img_2" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -40,7 +39,7 @@
                     android:layout_marginEnd="30dp"
                     android:text="Giỏ hàng"
                     android:textAlignment="center"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -65,7 +64,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="150dp"
             android:background="@drawable/logo"
             android:scaleType="fitXY" />
@@ -76,14 +75,14 @@
             android:layout_marginTop="5dp"
             android:text="Bạn chưa có sản phẩm nào trong giỏ"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/giohang_tieptuc"
             android:layout_width="200dp"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/img_2"
+            android:background="@color/black"
             android:text="Tiếp tục mua sắm"
             android:textColor="@color/white" />
     </LinearLayout>
@@ -109,8 +108,8 @@
             android:id="@+id/giohang_thanhtoan"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:background="@drawable/img_2"
-            android:text="Tiến hành thanh toán"
+            android:background="@color/black"
+            android:text="Thanh toán"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18dp" />

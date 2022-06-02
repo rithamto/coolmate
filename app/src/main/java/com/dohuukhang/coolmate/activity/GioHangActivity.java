@@ -41,21 +41,19 @@ import java.util.ArrayList;
 public class GioHangActivity extends AppCompatActivity {
     DatabaseReference reference, delete;
     ArrayList<Product> lstGioHang = new ArrayList<>();
-    ImageView back;
     FirebaseAuth mAuth;
     ConstraintLayout constraintLayout;
     RecyclerView recyclerViewGioHang;
-    FirebaseStorage storage = FirebaseStorage.getInstance();
+    FirebaseStorage storage = FirebaseStorage.getInstance("gs://coolmate-578b6.appspot.com");
     ProgressBar loadingView;
     LinearLayout linearLayout;
     Button tieptuc, thanhtoan;
     boolean check;
-
+    ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gio_hang);
-
         back = findViewById(R.id.giohang_back);
         constraintLayout = findViewById(R.id.layout_giohang);
         recyclerViewGioHang = findViewById(R.id.recyclerView_giohang);
@@ -69,7 +67,8 @@ public class GioHangActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(GioHangActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -132,7 +131,7 @@ public class GioHangActivity extends AppCompatActivity {
                             public void run() {
                                 if (check) {
                                     StorageReference photoRef = storage.getReferenceFromUrl(item.getHinhAnh());
-                                    delete = FirebaseDatabase.getInstance().getReference().child("Cart").child(currentUser.getUid()).child(item.getTen());
+                                    delete = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Cart").child(currentUser.getUid()).child(item.getTen());
                                     delete.removeValue();
 
                                     photoRef.delete();

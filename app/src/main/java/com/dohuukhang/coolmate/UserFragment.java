@@ -52,7 +52,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 //        aboutus = root.findViewById(R.id.user_hotro);
 //        setting = root.findViewById(R.id.user_caidat);
 
-//        loadData();
+        loadData();
 
 //        gioHang.setOnClickListener(this);
 //        btnQuanli.setOnClickListener(this);

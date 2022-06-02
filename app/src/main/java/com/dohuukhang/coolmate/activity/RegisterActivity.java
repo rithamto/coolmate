@@ -103,7 +103,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                             mData = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
                             final StorageReference storageRef = storage.getReferenceFromUrl("gs://coolmate-578b6.appspot.com");
-
                             final Date date = Calendar.getInstance().getTime();
                             final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                             final StorageReference mountainsRef = storageRef.child("image" + date.getTime() + ".png");

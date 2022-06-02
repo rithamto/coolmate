@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide;
 import com.dohuukhang.coolmate.activity.ProductActivity;
 import com.dohuukhang.coolmate.Object.Product;
 import com.dohuukhang.coolmate.R;
-import com.dohuukhang.coolmate.activity.ProductActivity;
 
 import java.util.ArrayList;
 
@@ -34,6 +33,7 @@ public class RecyclerViewAdapterGioHang extends RecyclerView.Adapter<RecyclerVie
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_giohang, parent, false);
         return new MyViewHolder(itemView);
     }
+
     @Override
     public void onBindViewHolder(MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.tensp.setText(mData.get(position).getTen());
@@ -73,12 +73,13 @@ public class RecyclerViewAdapterGioHang extends RecyclerView.Adapter<RecyclerVie
         return mData;
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tensp, giasp;
+        TextView nhasx, tensp, giasp;
         ImageView anhsp;
         CardView cardView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+
             giasp = (TextView) itemView.findViewById(R.id.giohang_gia);
             tensp = (TextView) itemView.findViewById(R.id.giohang_ten);
             anhsp = (ImageView) itemView.findViewById(R.id.imageView_giohang);

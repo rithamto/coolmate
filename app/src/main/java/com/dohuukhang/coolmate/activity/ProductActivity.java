@@ -90,7 +90,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         loadData();
 //        loadComment();
-//        getCurrentUser();
+        getCurrentUser();
 
         back.setOnClickListener(this);
         like.setOnClickListener(this);
@@ -262,7 +262,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                     String url = task.getResult().toString();
                     Product product = new Product(tensp.getText().toString(), String.valueOf(url), gia.getText().toString(),
                             danhmuc.getText().toString(),  mota.getText().toString());
-                    mData.child("Cart").child(name).child(tensp.getText().toString()).setValue(product);
+                    mData.child("Cart").child(id).child(tensp.getText().toString()).setValue(product);
                     loadingDialog.dismissDialog();
                     Toast.makeText(ProductActivity.this, "Đã thêm vào Giỏ hàng", Toast.LENGTH_SHORT).show();
                 } else {
