@@ -82,15 +82,14 @@ public class LoginActivity extends AppCompatActivity {
                                                     finish();
                                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                                     startActivity(intent);
-                                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công.",
-                                                            Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công.", Toast.LENGTH_SHORT).show();
                                                     loadingDialog.dismissDialog();
                                                     return;
                                                 }
 
                                                 // Get new Instance ID token
                                                 String token = task.getResult().getToken();
-                                                FirebaseDatabase.getInstance().getReference("User")
+                                                FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("User")
                                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                         .child("token")
                                                         .setValue(token);

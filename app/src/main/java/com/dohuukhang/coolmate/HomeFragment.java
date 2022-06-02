@@ -249,7 +249,7 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
 //        mAuth = FirebaseAuth.getInstance();
 //        FirebaseUser currentUser = mAuth.getCurrentUser();
 //
-//        refDaxem = FirebaseDatabase.getInstance().getReference().child("Favourite").child(currentUser.getUid());
+//        refDaxem = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Favourite").child(currentUser.getUid());
 //        refDaxem.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -59,16 +59,19 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tên người dùng"
                         android:textSize="20sp"/>
                     <TextView
+                        android:id="@+id/user_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Email"
                         android:textSize="15sp"/>
                     <TextView
+                        android:id="@+id/diaChi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ngày tháng năm sinh"

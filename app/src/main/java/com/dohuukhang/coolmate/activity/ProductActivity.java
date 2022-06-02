@@ -100,20 +100,20 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         xemthemmota.setOnClickListener(this);
     }
 
-//    private void createComment() {
-//        if (edtComment.getText().equals("")) {
-//            Toast.makeText(ProductActivity.this, "Vui lòng nhập nhận xét", Toast.LENGTH_SHORT).show();
-//        } else {
-//            mData = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
-//
-//            Date date = Calendar.getInstance().getTime();
-//            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-//            Comment comment = new Comment(edtComment.getText().toString(), id, tenkhachhang, imageUser);
-//            mData.child("Product").child(name).child("Comment").child(dateFormat.format(date)).setValue(comment);
-//            edtComment.setText(null);
-//            Toast.makeText(ProductActivity.this, "Đã gửi nhận xét", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    private void createComment() {
+        if (edtComment.getText().equals("")) {
+            Toast.makeText(ProductActivity.this, "Vui lòng nhập nhận xét", Toast.LENGTH_SHORT).show();
+        } else {
+            mData = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
+
+            Date date = Calendar.getInstance().getTime();
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Comment comment = new Comment(edtComment.getText().toString(), id, tenkhachhang, imageUser);
+            mData.child("Product").child(name).child("Comment").child(dateFormat.format(date)).setValue(comment);
+            edtComment.setText(null);
+            Toast.makeText(ProductActivity.this, "Đã gửi nhận xét", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void loadData() {
 
@@ -122,7 +122,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onDataChange( DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() == null) {
-//                    finish();
+                    finish();
                     Toast.makeText(ProductActivity.this, "Sản phẩm này không còn nữa", Toast.LENGTH_SHORT).show();
                 } else {
                     tensp.setText(dataSnapshot.child("Ten").getValue().toString());
@@ -185,48 +185,48 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         });
     }
 
-//    private void addLike() {
-//        final LoadingDialog loadingDialog = new LoadingDialog(ProductActivity.this);
-//        loadingDialog.startLoadingDialog();
-//        mData = FirebaseDatabase.getInstance().getReference();
-//        final StorageReference storageRef = storage.getReferenceFromUrl("gs://coolmate-578b6.appspot.com");
-//        Calendar calendar = Calendar.getInstance();
-//        final StorageReference mountainsRef = storageRef.child("image" + calendar.getTimeInMillis() + ".png");
-//
-//        // Get the data from an ImageView as bytes
-//        img.setDrawingCacheEnabled(true);
-//        img.buildDrawingCache();
-//        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-//        byte[] data = baos.toByteArray();
-//
-//        UploadTask uploadTask = mountainsRef.putBytes(data);
-//
-//        uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-//            @Override
-//            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-//                if (!task.isSuccessful()) {
-//                }
-//                return mountainsRef.getDownloadUrl();
-//            }
-//        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Uri> task) {
-//                if (task.isSuccessful()) {
-//                    String url = task.getResult().toString();
-//                    Product product = new Product(tensp.getText().toString(), String.valueOf(url), gia.getText().toString(),
-//                            danhmuc.getText().toString(),  mota.getText().toString());
-//                    mData.child("Favourite").child(id).child(tensp.getText().toString()).setValue(product);
-//                    loadingDialog.dismissDialog();
-//                    Toast.makeText(ProductActivity.this, "Đã thêm vào danh sách yêu thích", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    loadingDialog.dismissDialog();
-//                    Toast.makeText(ProductActivity.this, "Có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//    }
+    private void addLike() {
+        final LoadingDialog loadingDialog = new LoadingDialog(ProductActivity.this);
+        loadingDialog.startLoadingDialog();
+        mData = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
+        final StorageReference storageRef = storage.getReferenceFromUrl("gs://coolmate-578b6.appspot.com");
+        Calendar calendar = Calendar.getInstance();
+        final StorageReference mountainsRef = storageRef.child("image" + calendar.getTimeInMillis() + ".png");
+
+        // Get the data from an ImageView as bytes
+        img.setDrawingCacheEnabled(true);
+        img.buildDrawingCache();
+        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = mountainsRef.putBytes(data);
+
+        uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                }
+                return mountainsRef.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    String url = task.getResult().toString();
+                    Product product = new Product(tensp.getText().toString(), String.valueOf(url), gia.getText().toString(),
+                            danhmuc.getText().toString(),  mota.getText().toString());
+                    mData.child("Favourite").child(id).child(tensp.getText().toString()).setValue(product);
+                    loadingDialog.dismissDialog();
+                    Toast.makeText(ProductActivity.this, "Đã thêm vào danh sách yêu thích", Toast.LENGTH_SHORT).show();
+                } else {
+                    loadingDialog.dismissDialog();
+                    Toast.makeText(ProductActivity.this, "Có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
     private void addToCart() {
         final LoadingDialog loadingDialog = new LoadingDialog(ProductActivity.this);
@@ -273,27 +273,27 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         });
     }
 
-//    private void getCurrentUser() {
-//        mAuth = FirebaseAuth.getInstance();
-//        final FirebaseUser currentUser = mAuth.getCurrentUser();
-//        id = currentUser.getUid();
-//
-//        ref = FirebaseDatabase.getInstance().getReference().child("User").child(id);
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                currentUserName.setText(dataSnapshot.child("ten").getValue().toString());
-//                Glide.with(ProductActivity.this).load(dataSnapshot.child("anhDaiDien").getValue().toString()).placeholder(R.drawable.noimage).into(currentUserImage);
-//                tenkhachhang = dataSnapshot.child("ten").getValue().toString();
-//                imageUser = dataSnapshot.child("anhDaiDien").getValue().toString();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(ProductActivity.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
+    private void getCurrentUser() {
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
+        id = currentUser.getUid();
+
+        ref = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("User").child(id);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                currentUserName.setText(dataSnapshot.child("ten").getValue().toString());
+                Glide.with(ProductActivity.this).load(dataSnapshot.child("anhDaiDien").getValue().toString()).placeholder(R.drawable.noimage).into(currentUserImage);
+                tenkhachhang = dataSnapshot.child("ten").getValue().toString();
+                imageUser = dataSnapshot.child("anhDaiDien").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(ProductActivity.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
     public void onClick(View v) {
@@ -304,11 +304,11 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.text_xemthembaohanh:
                 bottomDialod1.show();
                 break;
-//            case R.id.btn_product_like:
-//                if (nguoiBan.equals(id))
-//                    Toast.makeText(ProductActivity.this, "Đây là sản phẩm bạn đăng bán", Toast.LENGTH_SHORT).show();
-//                else addLike();
-//                break;
+            case R.id.btn_product_like:
+                if (nguoiBan.equals(id))
+                    Toast.makeText(ProductActivity.this, "Đây là sản phẩm bạn đăng bán", Toast.LENGTH_SHORT).show();
+                else addLike();
+                break;
             case R.id.btn_choose:
                 Intent intent = new Intent(ProductActivity.this, ChonsizeActivity.class);
                 startActivity(intent);
@@ -316,9 +316,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_chonmua:
                 addToCart();
                 break;
-//            case R.id.btn_post:
-//                createComment();
-//                break;
+            case R.id.btn_post:
+                createComment();
+                break;
             case R.id.xemthem_mota:
                 Intent intent1 = new Intent(ProductActivity.this, ProductdetailActivity.class);
                 intent1.putExtra("mota", mota.getText());

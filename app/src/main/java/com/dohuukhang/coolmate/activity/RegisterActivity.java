@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button register;
     EditText user, password, diachi, ten;
     DatabaseReference mData;
-    FirebaseStorage storage = FirebaseStorage.getInstance();
+    FirebaseStorage storage = FirebaseStorage.getInstance("gs://coolmate-578b6.appspot.com");
     int REQUEST_CODE_IMAGE = 1;
     ImageView imageAdd;
     LoadingDialog loadingDialog;
@@ -101,8 +101,8 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             final FirebaseUser user = mAuth.getCurrentUser();
 
-                            mData = FirebaseDatabase.getInstance().getReference();
-                            final StorageReference storageRef = storage.getReferenceFromUrl("gs://orchid-29b28.appspot.com");
+                            mData = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
+                            final StorageReference storageRef = storage.getReferenceFromUrl("gs://coolmate-578b6.appspot.com");
 
                             final Date date = Calendar.getInstance().getTime();
                             final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -132,6 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                         if (!task.isSuccessful()) {
                                                             finish();
                                                             loadingDialog.dismissDialog();
+                                                            Toast.makeText(RegisterActivity.this, user1.getUID().toString(),Toast.LENGTH_SHORT).show();
                                                             Toast.makeText(RegisterActivity.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
                                                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                                             startActivity(intent);
@@ -140,7 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                                         // Get new Instance ID token
                                                         String token = task.getResult().getToken();
-                                                        FirebaseDatabase.getInstance().getReference("User")
+                                                        FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("User")
                                                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                                 .child("token")
                                                                 .setValue(token);

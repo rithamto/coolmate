@@ -105,6 +105,21 @@ public class ChonsizeActivity extends AppCompatActivity implements View.OnClickL
         else if(Loaicothe == 1 && Chieucao >= 179){
             Glide.with(ChonsizeActivity.this).load(R.drawable.letterxxl).placeholder(R.drawable.noimage).into(sugest_img);
         }
+        else if(Loaicothe == 2 && Chieucao < 160){
+            Glide.with(ChonsizeActivity.this).load(R.drawable.letters).placeholder(R.drawable.noimage).into(sugest_img);
+        }
+        else if(Loaicothe == 2 && Chieucao >= 160 && Chieucao < 166){
+            Glide.with(ChonsizeActivity.this).load(R.drawable.letterm).placeholder(R.drawable.noimage).into(sugest_img);
+        }
+        else if(Loaicothe == 2 && Chieucao >= 166 && Chieucao < 173){
+            Glide.with(ChonsizeActivity.this).load(R.drawable.letterl).placeholder(R.drawable.noimage).into(sugest_img);
+        }
+        else if(Loaicothe == 2 && Chieucao >= 173 && Chieucao < 178){
+            Glide.with(ChonsizeActivity.this).load(R.drawable.letterxl).placeholder(R.drawable.noimage).into(sugest_img);
+        }
+        else if(Loaicothe == 2 && Chieucao >= 178){
+            Glide.with(ChonsizeActivity.this).load(R.drawable.letterxxl).placeholder(R.drawable.noimage).into(sugest_img);
+        }
     }
 
     @Override

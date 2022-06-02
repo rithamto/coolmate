@@ -91,7 +91,7 @@ public class GioHangActivity extends AppCompatActivity {
         final RecyclerViewAdapterGioHang myAdapter = new RecyclerViewAdapterGioHang(GioHangActivity.this, lstGioHang);
         recyclerViewGioHang.setAdapter(myAdapter);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Cart").child(currentUser.getUid());
+        reference = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Cart").child(currentUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
