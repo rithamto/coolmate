@@ -21,7 +21,7 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".activity.SplashScreen"
-            android:theme="@style/Theme.AppCompat"
+            android:theme="@style/Theme.Coolmate"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

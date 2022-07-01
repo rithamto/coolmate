@@ -31,7 +31,7 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/img_2" />
+                    android:src="@drawable/img_6" />
 
                 <TextView
                     android:layout_width="match_parent"

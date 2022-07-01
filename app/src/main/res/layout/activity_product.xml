@@ -31,14 +31,14 @@
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/img_2"
+                    android:src="@drawable/img_6"
                     android:background="?android:attr/selectableItemBackgroundBorderless" />
 
                 <ImageView
                     android:id="@+id/btn_choose"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="230dp"
+                    android:layout_marginStart="240dp"
                     android:src="@drawable/img_5"
                     android:background="?android:attr/selectableItemBackgroundBorderless" />
 
@@ -48,6 +48,13 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="10dp"
                     android:src="@drawable/heart"
+                    android:background="?android:attr/selectableItemBackgroundBorderless" />
+                <ImageView
+                    android:id="@+id/btn_product_cart"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/img_12"
                     android:background="?android:attr/selectableItemBackgroundBorderless" />
             </LinearLayout>
 

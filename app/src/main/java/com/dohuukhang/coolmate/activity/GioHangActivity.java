@@ -74,8 +74,7 @@ public class GioHangActivity extends AppCompatActivity {
         tieptuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GioHangActivity.this, MainActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
     }

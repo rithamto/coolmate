@@ -183,7 +183,7 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
                 }
                 Collections.shuffle(full);
 
-                for (int i = 0; i < 3; ++i)
+                for (int i = 0; i < 5; ++i)
                     lstNoibat.add(full.get(i));
 
                 RecyclerViewAdapter myAdapterNoibat = new RecyclerViewAdapter(getContext(), lstNoibat);
@@ -242,34 +242,34 @@ public class HomeFragment extends Fragment  implements View.OnClickListener{
             }
         });
 
-//        LinearLayoutManager layoutManagerDaxem = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-//        final RecyclerView recyclerViewDaxem = (RecyclerView) root.findViewById(R.id.recyclerView_home_daxem);
-//        recyclerViewDaxem.setLayoutManager(layoutManagerDaxem);
-//
-//        mAuth = FirebaseAuth.getInstance();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//
-//        refDaxem = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Favourite").child(currentUser.getUid());
-//        refDaxem.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                loadingView.setVisibility(GONE);
-//                lstDaxem = new ArrayList<Product>();
-//                if (dataSnapshot.exists()) layoutDoraemon.setVisibility(GONE);
-//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                    Product p = dataSnapshot1.getValue(Product.class);
-//                    lstDaxem.add(p);
-//                }
-//                RecyclerViewAdapter myAdapterDaxem = new RecyclerViewAdapter(getContext(), lstDaxem);
-//                recyclerViewDaxem.setAdapter(myAdapterDaxem);
-//                swipeRefreshLayout.setRefreshing(false);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        LinearLayoutManager layoutManagerDaxem = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        final RecyclerView recyclerViewDaxem = (RecyclerView) root.findViewById(R.id.recyclerView_home_daxem);
+        recyclerViewDaxem.setLayoutManager(layoutManagerDaxem);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        refDaxem = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Favourite").child(currentUser.getUid());
+        refDaxem.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                loadingView.setVisibility(GONE);
+                lstDaxem = new ArrayList<Product>();
+                if (dataSnapshot.exists()) layoutDoraemon.setVisibility(GONE);
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Product p = dataSnapshot1.getValue(Product.class);
+                    lstDaxem.add(p);
+                }
+                RecyclerViewAdapter myAdapterDaxem = new RecyclerViewAdapter(getContext(), lstDaxem);
+                recyclerViewDaxem.setAdapter(myAdapterDaxem);
+                swipeRefreshLayout.setRefreshing(false);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void setLoadMoreAction() {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

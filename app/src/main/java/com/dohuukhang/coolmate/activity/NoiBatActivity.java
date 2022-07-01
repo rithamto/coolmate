@@ -69,7 +69,7 @@ public class NoiBatActivity extends AppCompatActivity {
                 }
                 Collections.shuffle(full);
 
-                for (int i = 0; i < 3; ++i)
+                for (int i = 0; i < 6; ++i)
                     lstNoibat.add(full.get(i));
 
                 RecyclerViewAdapterGioHang myAdapter = new RecyclerViewAdapterGioHang(NoiBatActivity.this, lstNoibat);

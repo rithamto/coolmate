@@ -24,6 +24,7 @@
         <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable-v24/ic_location_on_black_24dp.xml" value="0.21" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable-v24/ic_lock_black_24dp.xml" value="0.21" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable-v24/ic_person_black_login_24dp.xml" value="0.21" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable/coolmatelogo.xml" value="0.2425" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.204" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable/ic_launcher_background.xml" value="0.204" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.204" />
@@ -31,6 +32,7 @@
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_chon_size.xml" value="0.264" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_gio_hang.xml" value="0.15885416666666666" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_main.xml" value="0.22530996152201796" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_noi_bat.xml" value="0.1625" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_product.xml" value="0.28716002530044277" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/activity_productdetail.xml" value="0.15885416666666666" />
@@ -41,11 +43,14 @@
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/cardview_comment.xml" value="0.15885416666666666" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/cardview_daxem.xml" value="0.21875" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/cardview_giohang.xml" value="0.15885416666666666" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/cardview_notification.xml" value="0.22530996152201796" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/fragment_cart.xml" value="0.22530996152201796" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/fragment_home.xml" value="0.21587743732590528" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/fragment_search.xml" value="0.264" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/fragment_tienich.xml" value="0.196875" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/fragment_user.xml" value="0.22530996152201796" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/loading_layout.xml" value="0.15885416666666666" />
+        <entry key="..\:/ggggg/coolmate/app/src/main/res/layout/notification_fragment.xml" value="0.2" />
         <entry key="..\:/ggggg/coolmate/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.189" />
       </map>
     </option>

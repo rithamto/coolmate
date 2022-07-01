@@ -38,40 +38,31 @@ import com.dohuukhang.coolmate.adapter.RecyclerViewAdapterGioHang;
 
 import java.util.ArrayList;
 
-public class YeuThichActivity extends AppCompatActivity {
+public class GioHangPActivity extends AppCompatActivity {
     DatabaseReference reference, delete;
-    ArrayList<Product> lstYeuthich;
-    ImageView back;
+    ArrayList<Product> lstGioHang = new ArrayList<>();
     FirebaseAuth mAuth;
-    ConstraintLayout layout;
+    ConstraintLayout constraintLayout;
+    RecyclerView recyclerViewGioHang;
     FirebaseStorage storage = FirebaseStorage.getInstance("gs://coolmate-578b6.appspot.com");
     ProgressBar loadingView;
     LinearLayout linearLayout;
-    Button tieptuc;
-    RecyclerView recyclerView;
-    boolean j;
-
+    Button tieptuc, thanhtoan;
+    boolean check;
+    ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_yeu_thich);
-
-        layout = findViewById(R.id.layout_yeuthich);
-        back = findViewById(R.id.yeuthich_back);
-        loadingView = findViewById(R.id.loading_view_yeuthich);
-        linearLayout = findViewById(R.id.layoutyt_noProduct);
-        tieptuc = findViewById(R.id.yeuthich_tieptuc);
-        recyclerView = findViewById(R.id.recyclerView_yeuthich);
+        setContentView(R.layout.activity_gio_hang);
+        back = findViewById(R.id.giohang_back);
+        constraintLayout = findViewById(R.id.layout_giohang);
+        recyclerViewGioHang = findViewById(R.id.recyclerView_giohang);
+        loadingView = findViewById(R.id.loading_view_giohang);
+        linearLayout = findViewById(R.id.layout_noProduct);
+        tieptuc = findViewById(R.id.giohang_tieptuc);
+        thanhtoan = findViewById(R.id.giohang_thanhtoan);
 
         loadData();
-
-        tieptuc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(YeuThichActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,46 +70,55 @@ public class YeuThichActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        tieptuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GioHangPActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadData() {
-        LinearLayoutManager layoutManagerGioHang = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManagerGioHang);
-
         mAuth = FirebaseAuth.getInstance();
         final FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        reference = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Favourite").child(currentUser.getUid());
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerViewGioHang.setLayoutManager(layoutManager2);
+        final RecyclerViewAdapterGioHang myAdapter = new RecyclerViewAdapterGioHang(GioHangPActivity.this, lstGioHang);
+        recyclerViewGioHang.setAdapter(myAdapter);
+
+        reference = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Cart").child(currentUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                lstYeuthich = new ArrayList<Product>();
+                lstGioHang.clear();
                 loadingView.setVisibility(GONE);
                 if (dataSnapshot.exists()) linearLayout.setVisibility(GONE);
+
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Product p = dataSnapshot1.getValue(Product.class);
-                    lstYeuthich.add(p);
+                    lstGioHang.add(p);
                 }
-                final RecyclerViewAdapterGioHang myAdapter = new RecyclerViewAdapterGioHang(YeuThichActivity.this, lstYeuthich);
-                recyclerView.setAdapter(myAdapter);
                 myAdapter.notifyDataSetChanged();
 
-                SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(YeuThichActivity.this) {
+                SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(GioHangPActivity.this) {
                     @Override
                     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                         final int position = viewHolder.getAdapterPosition();
                         final Product item = myAdapter.getData().get(position);
-                        j = true;
+                        check = true;
 
                         myAdapter.removeItem(position);
                         Snackbar snackbar = Snackbar
-                                .make(layout, "Item was removed from the list.", Snackbar.LENGTH_LONG);
+                                .make(constraintLayout, "Item was removed from the list.", Snackbar.LENGTH_LONG);
                         snackbar.setAction("UNDO", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                j = false;
+                                check = false;
                                 myAdapter.restoreItem(item, position);
-                                recyclerView.scrollToPosition(position);
+                                recyclerViewGioHang.scrollToPosition(position);
                             }
                         });
                         snackbar.setActionTextColor(Color.YELLOW);
@@ -128,9 +128,9 @@ public class YeuThichActivity extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                if (j) {
+                                if (check) {
                                     StorageReference photoRef = storage.getReferenceFromUrl(item.getHinhAnh());
-                                    delete = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Favourite").child(currentUser.getUid()).child(item.getTen());
+                                    delete = FirebaseDatabase.getInstance("https://coolmate-578b6-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Cart").child(currentUser.getUid()).child(item.getTen());
                                     delete.removeValue();
 
                                     photoRef.delete();
@@ -140,12 +140,12 @@ public class YeuThichActivity extends AppCompatActivity {
                     }
                 };
                 ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
-                itemTouchhelper.attachToRecyclerView(recyclerView);
+                itemTouchhelper.attachToRecyclerView(recyclerViewGioHang);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(YeuThichActivity.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GioHangPActivity.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -52,10 +52,9 @@ import java.util.Date;
 public class ProductActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView tensp, gia, danhmuc,  mota, currentUserName;
     private ImageView img;
-    ImageView back, like, gioHang, vietnhanxet, currentUserImage;
+    ImageView back, like, gioHang, vietnhanxet, currentUserImage, cart;
     EditText edtComment;
     Button chonmua, xemthemmota;
-//    public Query ref;
     DatabaseReference mData, ref;
     FirebaseStorage storage = FirebaseStorage.getInstance("gs://coolmate-578b6.appspot.com");
     FirebaseAuth mAuth;
@@ -67,7 +66,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-
+        cart = findViewById(R.id.btn_product_cart);
         tensp = findViewById(R.id.txt_tensp);
         gia = findViewById(R.id.txt_giasp);
         danhmuc = findViewById(R.id.txt_danhmuc);
@@ -89,9 +88,10 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         name = intent.getExtras().getString("Ten");
 
         loadData();
-//        loadComment();
+        loadComment();
         getCurrentUser();
 
+        cart.setOnClickListener(this);
         back.setOnClickListener(this);
         like.setOnClickListener(this);
         gioHang.setOnClickListener(this);
@@ -298,6 +298,10 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_product_cart:
+                Intent intent2 = new Intent(ProductActivity.this, GioHangActivity.class);
+                startActivity(intent2);
+                break;
             case R.id.btn_product_back:
                 finish();
                 break;
@@ -305,9 +309,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                 bottomDialod1.show();
                 break;
             case R.id.btn_product_like:
-                if (nguoiBan.equals(id))
-                    Toast.makeText(ProductActivity.this, "Đây là sản phẩm bạn đăng bán", Toast.LENGTH_SHORT).show();
-                else addLike();
+                addLike();
                 break;
             case R.id.btn_choose:
                 Intent intent = new Intent(ProductActivity.this, ChonsizeActivity.class);
@@ -321,7 +323,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.xemthem_mota:
                 Intent intent1 = new Intent(ProductActivity.this, ProductdetailActivity.class);
-                intent1.putExtra("mota", mota.getText());
+                intent1.putExtra("mota", mota.getText().toString());
                 startActivity(intent1);
                 break;
         }
